@@ -1,4 +1,4 @@
-**Snake Game 🐍**
+**SnakeIt.io 🐍**
 -----------------------------------------------------------------------------------------------------------------------
 
 This repository contains the source code for a simple and fun Snake game implemented in HTML, CSS, and JavaScript. The game features a responsive canvas, touch controls for mobile devices, and a high score tracking system using local storage.
