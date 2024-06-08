@@ -3,7 +3,7 @@
 <head>
   <title>Basic Snake HTML Game</title>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
@@ -85,7 +85,7 @@
   </style>
 </head>
 <body>
-<canvas width="1300" height="625" id="game"></canvas>
+<canvas id="game"></canvas>
 <div class="game-over-overlay" id="gameOverOverlay">
   <div class="game-over-box">
     <h1>Game Over</h1>
@@ -99,8 +99,8 @@
   var context = canvas.getContext('2d');
 
   function resizeCanvas() {
-    canvas.width = window.innerWidth * 0.9;
-    canvas.height = window.innerHeight * 0.7;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
   }
 
   window.addEventListener('resize', resizeCanvas);
@@ -151,8 +151,8 @@
     snake.dy = 0;
     snake.cells = [];
     snake.maxCells = 4;
-    apple.x = 320;
-    apple.y = 320;
+    apple.x = getRandomInt(0, Math.floor(canvas.width / grid)) * grid;
+    apple.y = getRandomInt(0, Math.floor(canvas.height / grid)) * grid;
     document.getElementById('gameOverOverlay').style.opacity = 0;
     requestAnimationFrame(loop);
   }
@@ -183,11 +183,11 @@
     }
 
     context.fillStyle = 'red';
-    context.fillRect(apple.x, apple.y, grid-1, grid-1);
+    context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
 
     context.fillStyle = 'green';
     snake.cells.forEach(function(cell, index) {
-      context.fillRect(cell.x, cell.y, grid-1, grid-1);
+      context.fillRect(cell.x, cell.y, grid - 1, grid - 1);
 
       if (cell.x === apple.x && cell.y === apple.y) {
         snake.maxCells++;
